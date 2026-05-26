@@ -1,0 +1,18 @@
+<ion-button
+  class="iui-action-button"
+  [type]="type()"
+  [fill]="fill()"
+  [color]="color()"
+  [size]="size()"
+  [disabled]="disabled() || loading()"
+  [expand]="expand()"
+  (click)="buttonClicked.emit($event)"
+>
+  @if (loading()) {
+    <ion-spinner aria-hidden="true" [name]="spinner()" />
+  } @else if (icon()) {
+    <ion-icon aria-hidden="true" [name]="icon()" [slot]="iconSlot()" />
+  }
+
+  <span>{{ label() }}</span>
+</ion-button>

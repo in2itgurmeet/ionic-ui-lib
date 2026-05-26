@@ -1,0 +1,23 @@
+<section class="iui-surface-card" [ngClass]="'iui-surface-card--' + tone()">
+  @if (eyebrow() || title() || subtitle()) {
+    <header class="iui-surface-card__header">
+      @if (eyebrow()) {
+        <p class="iui-surface-card__eyebrow">{{ eyebrow() }}</p>
+      }
+
+      @if (title()) {
+        <h2 class="iui-surface-card__title">{{ title() }}</h2>
+      }
+
+      @if (subtitle()) {
+        <p class="iui-surface-card__subtitle">{{ subtitle() }}</p>
+      }
+    </header>
+  }
+
+  <div class="iui-surface-card__content">
+    <ng-content />
+  </div>
+
+  <ng-content select="[iui-card-actions]" />
+</section>

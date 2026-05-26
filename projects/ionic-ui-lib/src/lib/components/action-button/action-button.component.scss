@@ -1,0 +1,14 @@
+:host {
+  display: inline-block;
+}
+
+:host([full-width]) {
+  display: block;
+}
+
+.iui-action-button {
+  min-height: 40px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}

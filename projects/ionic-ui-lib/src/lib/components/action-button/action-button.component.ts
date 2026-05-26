@@ -9,42 +9,8 @@ export type IonicUiButtonSize = 'small' | 'default' | 'large';
   selector: 'iui-action-button',
   standalone: true,
   imports: [IonButton, IonIcon, IonSpinner],
-  template: `
-    <ion-button
-      class="iui-action-button"
-      [type]="type()"
-      [fill]="fill()"
-      [color]="color()"
-      [size]="size()"
-      [disabled]="disabled() || loading()"
-      [expand]="expand()"
-      (click)="buttonClicked.emit($event)"
-    >
-      @if (loading()) {
-        <ion-spinner aria-hidden="true" [name]="spinner()" />
-      } @else if (icon()) {
-        <ion-icon aria-hidden="true" [name]="icon()" [slot]="iconSlot()" />
-      }
-
-      <span>{{ label() }}</span>
-    </ion-button>
-  `,
-  styles: `
-    :host {
-      display: inline-block;
-    }
-
-    :host([full-width]) {
-      display: block;
-    }
-
-    .iui-action-button {
-      min-height: 40px;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-  `,
+  templateUrl: './action-button.component.html',
+  styleUrl: './action-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IuiActionButtonComponent {
