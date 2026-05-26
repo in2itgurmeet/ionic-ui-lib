@@ -46,7 +46,7 @@ import { Component } from '@angular/core';
 import {
   IuiActionButtonComponent,
   IuiInputComponent,
-  IuiModalComponent,
+  IuiModalService,
   IuiMultiSelectComponent,
   IuiSingleSelectComponent,
   IuiSurfaceCardComponent
@@ -58,7 +58,6 @@ import {
   imports: [
     IuiActionButtonComponent,
     IuiInputComponent,
-    IuiModalComponent,
     IuiMultiSelectComponent,
     IuiSingleSelectComponent,
     IuiSurfaceCardComponent
@@ -78,17 +77,10 @@ import {
 
     <iui-multi-select label="Roles" [options]="roleOptions" />
 
-    <iui-modal
-      title="User details"
-      [isOpen]="isModalOpen"
-      [data]="selectedUser"
-      (confirm)="saveUser($event)"
-      (cancel)="isModalOpen = false"
-    />
+    <iui-action-button label="Open modal" (buttonClicked)="openUserModal()" />
   `
 })
 export class DashboardComponent {
-  isModalOpen = false;
   selectedUser = { id: 1, name: 'Gurmeet' };
   statusOptions = [
     { label: 'Active', value: 'active' },
@@ -99,8 +91,65 @@ export class DashboardComponent {
     { label: 'Editor', value: 'editor' }
   ];
 
-  saveUser(user: { id: number; name: string } | null): void {
-    this.isModalOpen = false;
+  constructor(private readonly modal: IuiModalService) {}
+
+  async openUserModal(): Promise<void> {
+    const modalRef = await this.modal.open(UserDetailsModalComponent, {
+      title: 'User details',
+      data: this.selectedUser,
+      componentProps: {
+        mode: 'edit'
+      }
+    });
+
+    const savedUser = await modalRef.result;
+  }
+}
+```
+
+## NgbModal-Style Modal
+
+Open any standalone component from a service:
+
+```ts
+import { inject } from '@angular/core';
+import { IuiModalService } from 'ionic-ui-lib';
+
+export class UsersComponent {
+  private readonly modal = inject(IuiModalService);
+
+  async editUser(user: User): Promise<void> {
+    const modalRef = await this.modal.open<UserModalComponent, User, User>(UserModalComponent, {
+      title: 'Edit user',
+      data: user,
+      componentProps: {
+        mode: 'edit'
+      }
+    });
+
+    const savedUser = await modalRef.result;
+  }
+}
+```
+
+Read data and close from inside the modal component:
+
+```ts
+import { Component, inject } from '@angular/core';
+import { IUI_MODAL_DATA, IuiActiveModal } from 'ionic-ui-lib';
+
+@Component({
+  standalone: true,
+  template: `
+    <button type="button" (click)="save()">Save</button>
+  `
+})
+export class UserModalComponent {
+  readonly user = inject(IUI_MODAL_DATA) as User;
+  readonly activeModal = inject(IuiActiveModal<User, User>);
+
+  save(): void {
+    this.activeModal.close(this.user);
   }
 }
 ```

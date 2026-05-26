@@ -44,6 +44,7 @@ The publishable package is generated at `dist/ionic-ui-lib`.
 - `iui-single-select`
 - `iui-multi-select`
 - `iui-modal`
+- `IuiModalService` for NgbModal-style dynamic modals
 
 ## Local Package Test
 
