@@ -3,5 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ionic-ui-lib": {
+      "projectType": "library",
+      "root": "projects/ionic-ui-lib",
+      "sourceRoot": "projects/ionic-ui-lib/src",
+      "prefix": "iui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ionic-ui-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ionic-ui-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ionic-ui-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
   }
 }

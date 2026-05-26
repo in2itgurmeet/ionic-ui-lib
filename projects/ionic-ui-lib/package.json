@@ -1,0 +1,44 @@
+{
+  "name": "ionic-ui-lib",
+  "version": "1.0.0",
+  "description": "A professional reusable Ionic and Angular component library for Ionic Angular and standard Angular applications.",
+  "author": {
+    "name": "Gurmeet Prajapati",
+    "email": "initgurmeet@gmail.com"
+  },
+  "creator": {
+    "name": "Gurmeet Prajapati",
+    "email": "initgurmeet@gmail.com",
+    "url": "https://github.com/in2itgurmeet"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/in2itgurmeet/ionic-ui-lib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/in2itgurmeet/ionic-ui-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/in2itgurmeet/ionic-ui-lib/issues"
+  },
+  "documentation": "https://github.com/in2itgurmeet/ionic-ui-lib#readme",
+  "keywords": [
+    "angular",
+    "ionic",
+    "ionic-angular",
+    "component-library",
+    "ui-library",
+    "standalone-components",
+    "typescript",
+    "web-components"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@ionic/angular": "^8.0.0",
+    "rxjs": "^7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
