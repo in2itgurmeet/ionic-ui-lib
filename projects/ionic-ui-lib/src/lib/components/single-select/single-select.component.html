@@ -1,0 +1,18 @@
+<ion-select
+  class="iui-single-select"
+  [value]="value()"
+  [label]="label()"
+  [placeholder]="placeholder()"
+  [interface]="interfaceType()"
+  [fill]="fill()"
+  [labelPlacement]="labelPlacement()"
+  [disabled]="disabledInput() || isDisabled()"
+  (ionChange)="handleChange($event)"
+  (ionDismiss)="handleDismiss()"
+>
+  @for (option of options(); track option.value) {
+    <ion-select-option [value]="option.value" [disabled]="option.disabled">
+      {{ option.label }}
+    </ion-select-option>
+  }
+</ion-select>

@@ -1,3 +1,7 @@
 export * from './lib/ionic-ui-lib.providers';
 export * from './lib/components/action-button/action-button.component';
+export * from './lib/components/input/input.component';
+export * from './lib/components/modal/modal.component';
+export * from './lib/components/multi-select/multi-select.component';
+export * from './lib/components/single-select/single-select.component';
 export * from './lib/components/surface-card/surface-card.component';

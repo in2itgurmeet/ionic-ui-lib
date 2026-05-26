@@ -36,6 +36,15 @@ npm run build:prod
 
 The publishable package is generated at `dist/ionic-ui-lib`.
 
+## Included Components
+
+- `iui-action-button`
+- `iui-surface-card`
+- `iui-input`
+- `iui-single-select`
+- `iui-multi-select`
+- `iui-modal`
+
 ## Local Package Test
 
 ```bash

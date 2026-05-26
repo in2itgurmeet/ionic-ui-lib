@@ -1,0 +1,34 @@
+<ion-modal
+  class="iui-modal"
+  [isOpen]="isOpen()"
+  [backdropDismiss]="backdropDismiss()"
+  (ionModalDidDismiss)="close('dismiss')"
+>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{ title() }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button fill="clear" (click)="close('cancel')">{{ cancelText() }}</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="iui-modal__content">
+      <div class="iui-modal__body">
+        <ng-content />
+
+        @if (data()) {
+          <pre class="iui-modal__data">{{ data() | json }}</pre>
+        }
+      </div>
+    </ion-content>
+
+    @if (showFooter()) {
+      <footer class="iui-modal__footer">
+        <ion-button fill="clear" (click)="close('cancel')">{{ cancelText() }}</ion-button>
+        <ion-button (click)="close('confirm')">{{ confirmText() }}</ion-button>
+      </footer>
+    }
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,16 @@
+<ion-input
+  class="iui-input"
+  [value]="value()"
+  [label]="label()"
+  [placeholder]="placeholder()"
+  [helperText]="helperText()"
+  [errorText]="errorText()"
+  [type]="type()"
+  [fill]="fill()"
+  [labelPlacement]="labelPlacement()"
+  [clearInput]="clearInput()"
+  [readonly]="readonlyInput()"
+  [disabled]="disabledInput() || isDisabled()"
+  (ionInput)="handleInput($event)"
+  (ionBlur)="handleBlur()"
+/>
